@@ -48,7 +48,7 @@ texto_cartas = []
 # Sorteando as cartas e exibindo na grade 3x3
 def sortear_carta(quantidade=9):
     #random.shuffle(list(arcanos.keys()))
-    cartas_selecionadas = sample(list(arcanos.keys()), quantidade)
+    cartas_selecionadas = sample(list(arcanos.items()), quantidade)
 
     # Limpando rótulos anteriores, se houver
     for texto in texto_cartas:
@@ -61,9 +61,9 @@ def sortear_carta(quantidade=9):
         texto_cartas.append(texto)
 
 # Botões de sorteio
-botao_simples = Button(janela, text="Simples", command=lambda: sortear_carta(1))
-botao_trindade = Button(janela, text="Trindade", command=lambda: sortear_carta(3))
-botao_chaos = Button(janela, text="Chaos", command=lambda: sortear_carta(9))
+botao_simples = Button(janela, text="Arcano Primordial", command=lambda: sortear_carta(1))
+botao_trindade = Button(janela, text="Trindade Arcana", command=lambda: sortear_carta(3))
+botao_chaos = Button(janela, text="Círculo Arcano", command=lambda: sortear_carta(7))
 
 # Posicionando os botões
 botao_simples.pack()
