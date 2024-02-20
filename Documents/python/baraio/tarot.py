@@ -1,6 +1,7 @@
 import random
 from tkinter import *
 from tkinter import ttk
+from random import sample
 
 # Janela inicial
 janela = Tk()
@@ -46,8 +47,8 @@ texto_cartas = []
 
 # Sorteando as cartas e exibindo na grade 3x3
 def sortear_carta(quantidade=9):
-    random.shuffle(list(arcanos.keys()))
-    cartas_selecionadas = list(arcanos.items())[:quantidade]
+    #random.shuffle(list(arcanos.keys()))
+    cartas_selecionadas = sample(list(arcanos.keys()), quantidade)
 
     # Limpando rótulos anteriores, se houver
     for texto in texto_cartas:
