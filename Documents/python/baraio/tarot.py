@@ -3,9 +3,14 @@ from tkinter import *
 from tkinter import ttk
 from random import sample
 
-# Janela inicial
+# tela inicial/menu
 janela = Tk()
 janela.title("Chaos")
+
+# definindo tamanho do menu
+largura_janela = 700
+altura_janela = 300
+janela.geometry(f"{largura_janela}x{altura_janela}")
 
 # Criando um frame para conter as cartas
 cartas_frame = ttk.Frame(janela)
@@ -56,8 +61,12 @@ def sortear_carta(quantidade=9):
 
     # Exibindo as cartas na grade 3x3
     for i, (carta, numero) in enumerate(cartas_selecionadas):
-        texto = Label(cartas_frame, text=f"{carta} {numero}", font=("Consolas", 16))
-        texto.grid(row=i // 3, column=i % 3)
+        if i < 6:
+            texto = Label(cartas_frame, text=f"{carta} {numero}", font=("Consolas", 16), anchor='center')
+            texto.grid(row=i // 3, column=i % 3)
+        else:
+            texto = Label(cartas_frame, text=f"{carta} {numero}", font=("Consolas", 16), anchor='center')
+            texto.grid(row=2, column=1)
         texto_cartas.append(texto)
 
 # Botões de sorteio
@@ -65,10 +74,10 @@ botao_simples = Button(janela, text="Arcano Primordial", command=lambda: sortear
 botao_trindade = Button(janela, text="Trindade Arcana", command=lambda: sortear_carta(3))
 botao_chaos = Button(janela, text="Círculo Arcano", command=lambda: sortear_carta(7))
 
-# Posicionando os botões
-botao_simples.pack()
-botao_trindade.pack()
-botao_chaos.pack()
+# posicionando os botões pra ficarem mais pra baixo
+botao_simples.pack(side=BOTTOM, pady=15)
+botao_trindade.pack(side=BOTTOM, pady=15)
+botao_chaos.pack(side=BOTTOM, pady=15)
 
 # Executando a janela principal
 janela.mainloop()
